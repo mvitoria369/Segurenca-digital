@@ -15,13 +15,17 @@
             <h2 class="titulo-principal">Gerador de senhas</h2>
             <h3 class="titulo-secundario">Gere instantaneamente uma senha aleatória e segura</h3>
         </div>
+
         <div class="conteudo-senha">
-            <label for="senha">Senha</label>
-            <input name="senha" type="text" id="campo-senha">
+            <label for="campo-senha">Senha</label>
+            <input name="senha" type="text" id="campo-senha" readonly>
         </div>
+
         <div class="parametro">
             <h3 class="parametro-titulo">Personalize sua senha</h3>
+            
             <div class="parametro-coluna__senha">
+                
                 <div class="parametro-senha">
                     <h4 class="parametro-senha__titulo">Número de caracteres</h4>
                     <div class="parametro-senha-botoes">
@@ -30,45 +34,63 @@
                         <button class="parametro-senha__botao">+</button>
                     </div>
                 </div>               
+                
                 <div class="parametro-senha">
                     <h4 class="parametro-senha__titulo">Características da senha</h4>
+                    <div class="parametro-senha-checkbox">
+                        <input id="maiusculo" name="maiusculo" type="checkbox" checked>
+                        <label for="maiusculo">Letras maiúsculas</label>
+                    </div>
+                    <div class="parametro-senha-checkbox">
+                        <input id="minusculo" name="minusculo" type="checkbox">
+                        <label for="minusculo">Letras minúsculas</label>
+                    </div>
+                    <div class="parametro-senha-checkbox">
+                        <input id="numero" name="numero" type="checkbox">
+                        <label for="numero">Números</label>
+                    </div>
+                    <div class="parametro-senha-checkbox">
+                        <input id="simbolo" name="simbolo" type="checkbox">
+                        <label for="simbolo">Símbolos</label>
+                    </div>
                 </div>
+
                 <div class="parametro-senha">
                     <h4 class="parametro-senha__titulo">Força da senha</h4>
+                    <div class="barra">
+                        <div class="forca fraca"></div>
+                    </div>
+                    <div class="parametro-senha-textos">
+                        <p>Fraca</p>
+                        <p>Média</p>
+                        <p>Forte</p>
+                    </div>
                 </div>
+
             </div>
         </div>
     </section>
-    <div class="parametro-senha">
-        <h4 class="parametro-senha__titulo">Características da senha</h4>
-        <div class="parametro-senha-checkbox">
-            <input id="maiusculo" name="maiusculo" type="checkbox" checked>
-            <label for="maiusculo">Letras maiúsculas</label>
-        </div>
-        <div class="parametro-senha-checkbox">
-            <input id="minusculo" name="minusculo" type="checkbox">
-            <label for="minusculo">Letras minúsculas</label>
-        </div>
-        <div class="parametro-senha-checkbox">
-            <input id="numero" name="numero" type="checkbox">
-            <label for="numero">Números</label>
-        </div>
-        <div class="parametro-senha-checkbox">
-            <input id="simbolo" name="simbolo" type="checkbox">
-            <label for="simbolo">Símbolos</label>
-        </div>
-    </div>
-    <div class="parametro-senha">
-        <h4 class="parametro-senha__titulo">Força da senha</h4>
-        <div class="barra"></div>
-        <div class="forca fraca"></div>
-        <div class="parametro-senha-textos">
-            <p>Fraca</p>
-            <p>Média</p>
-            <p>Forte</p>
-        </div>
-    </div>
-    <div class="forca fraca"></div>
+
+    <script>
+        const numeroSenha = document.querySelector('.parametro-senha__texto');
+        const botoes = document.querySelectorAll('.parametro-senha__botao');
+        let tamanhoSenha = 12;
+
+        numeroSenha.textContent = tamanhoSenha;
+
+        // Lógica para fazer os botões de + e - funcionarem
+        botoes[0].onclick = function() {
+            if (tamanhoSenha > 1) { // Evita números menores que 1
+                tamanhoSenha--;
+                numeroSenha.textContent = tamanhoSenha;
+            }
+        };
+
+        botoes[1].onclick = function() {
+            tamanhoSenha++;
+            numeroSenha.textContent = tamanhoSenha;
+        };
+    </script>
 </body>
 
 </html>
